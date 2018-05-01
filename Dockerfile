@@ -1,4 +1,4 @@
-ARG MONGO_VERSION=3.4.14
+ARG MONGO_VERSION=3.7.3
 FROM mongo:${MONGO_VERSION}
 
 # ================================================================================================
@@ -24,7 +24,7 @@ MAINTAINER "Laradock Team <mahmoud@zalt.me>"
 
 ENV MONGO_INITDB_ROOT_PASSWORD="password" \
     MONGO_INITDB_ROOT_USERNAME="root" \
-    MONGO_INITDB_ROOT_HOST="mongodb" \
+    MONGO_INITDB_ROOT_HOST="localhost" \
     MONGO_DATABASE="laradock_mongodb" \
     MONGO_USER="laradock" \
     MONGO_PASSWORD="password"
