@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOCKER_IMAGE="dockerframework/mongodb"
-DOCKER_TAG="3.7"
+DOCKER_TAG="latest"
 
 #### Halt script on error
 set -e
