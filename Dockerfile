@@ -20,11 +20,12 @@ FROM mongo:${MONGO_VERSION}
 #   - Huadong Zuo @zuohuadong
 # ================================================================================================
 
+
 MAINTAINER "Laradock Team <mahmoud@zalt.me>"
 
 ENV MONGO_INITDB_ROOT_PASSWORD="password" \
     MONGO_INITDB_ROOT_USERNAME="root" \
-    MONGO_INITDB_ROOT_HOST="mongodb" \
+    MONGO_INITDB_ROOT_HOST="localhost" \
     MONGO_DATABASE="laradock_mongodb" \
     MONGO_USER="laradock" \
     MONGO_PASSWORD="password"
@@ -34,10 +35,11 @@ RUN mkdir -p /data/db /data/configdb \
 
 VOLUME /data/db /data/configdb
 
+COPY ./config/mongodb/mongodb.conf /etc/mongodb.conf
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 27017
-CMD ["mongod"]
+CMD [ "mongod" ]
