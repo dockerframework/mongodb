@@ -26,3 +26,5 @@ services:
       - MONGO_DATABASE=laradock_mongodb
       - MONGO_USER=laradock
       - MONGO_PASSWORD=password
+    command: >
+      /usr/bin/mongod --config /etc/mongodb.conf
