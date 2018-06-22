@@ -29,12 +29,14 @@ ENV MONGO_INITDB_ROOT_PASSWORD="password" \
     MONGO_USER="laradock" \
     MONGO_PASSWORD="password"
 
-RUN mkdir -p /data/db /data/configdb \
+RUN mkdir -p /data/db \ 
+    && mkdir -p /data/configdb \
+    && mkdir -p /data/mongodb \
     && chown -R mongodb:mongodb /data/db /data/configdb
 
-VOLUME /data/db /data/configdb
+VOLUME /data/db /data/configdb /data/mongodb
 
-COPY ./config/mongodb/mongodb.conf /etc/mongodb.conf
+COPY ./config/mongodb/mongod.conf /etc/mongod.conf
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh
 
